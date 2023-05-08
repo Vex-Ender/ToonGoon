@@ -17,20 +17,20 @@ public class PlayerMovement : MonoBehaviour
     bool IsJumping;
 
     Animator animator;
-    private string currentState;
+    //private string currentState;
 
-    //Animation States
-    const string Player_Idle = "idle";
-    const string Player_Jump = "jump";
-    const string Player_Run = "run";
-    const string Player_Fall = "fall";
-    /*public enum PlayerState
+    /*//Animation States
+    const string Player_Idle = "Player_idle";
+    const string Player_Jump = "Player_jump";
+    const string Player_Run = "Player_run";
+    const string Player_Fall = "Player_fall";
+    public enum PlayerState
     { 
 
-        idle,
-        jump,
-        run,
-        fall,
+        Player_idle,
+        Player_jump,
+        Player_run,
+        Player_fall,
     }*/
 
     private FacingDirection _playerDirection;
@@ -91,16 +91,11 @@ public class PlayerMovement : MonoBehaviour
         if(moveHorizontal > 0.1f || moveHorizontal < -0.1f)
         {
             rb2D.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode2D.Impulse);
-            ChangeAnimationState(Player_Run);
         }
-       /* else
-        {
-            ChangeAnimationState(Player_Idle);
-        }*/
+        
         if (!IsJumping && moveVertical > 0.1f) 
         {
-            rb2D.AddForce(new Vector2(0f, moveVertical * jumpforce), ForceMode2D.Impulse);
-            ChangeAnimationState(Player_Jump);
+            rb2D.AddForce(new Vector2(0f, moveVertical * jumpforce), ForceMode2D.Impulse); 
         }
     }
 
@@ -110,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.tag == "Ground")
         {
             IsJumping = false;
+            
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -117,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             IsJumping = true;
+            
         }
     }
 
@@ -130,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    void ChangeAnimationState(string newState)
+    /*void ChangeAnimationState(string newState)
     {
         //stop the same animation from interrupting itself
         if (currentState == newState) return;
@@ -140,5 +137,5 @@ public class PlayerMovement : MonoBehaviour
 
         //Ressign the current state
         currentState = newState;
-    }
+    }*/
 }
