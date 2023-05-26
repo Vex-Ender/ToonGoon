@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+
 
 public class RunnerPlayer : MonoBehaviour
 {
@@ -11,6 +14,9 @@ public class RunnerPlayer : MonoBehaviour
 
     [SerializeField]
     private bool isGrounded;
+
+
+    public UIMenu _menu;
 
     private void Awake()
     {
@@ -28,6 +34,11 @@ public class RunnerPlayer : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb2D.AddForce(Vector2.up * Jump);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            ShowPanel(_menu.Mainmenu);
         }
     }
 
@@ -52,7 +63,18 @@ public class RunnerPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
+    }
+
+    public void HidePanel(VisualElement panelToHide)
+    {
+        panelToHide.style.display = DisplayStyle.None;
+        panelToHide.style.visibility = Visibility.Hidden;
+    }
+    public void ShowPanel(VisualElement panelToShow)
+    {
+        panelToShow.style.display = DisplayStyle.Flex;
+        panelToShow.style.visibility = Visibility.Visible;
     }
 }

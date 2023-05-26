@@ -6,7 +6,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject spawnObject;
-    //public GameObject spawnObject2;
+    public GameObject spawnObject2;
     //public GameObject spawnObject3;
     public GameObject[] spawnPoints;
     public float timer;

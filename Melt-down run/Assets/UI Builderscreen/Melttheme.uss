@@ -1,0 +1,17 @@
+.Button {
+    width: 250px;
+    height: 10px;
+    font-size: 20px;
+    -unity-text-outline-width: 10px;
+}
+
+.Button:hover {
+    background-color: rgba(21, 60, 19, 0);
+    color: rgb(45, 152, 49);
+}
+
+.LeaveButton:hover {
+    color: rgb(75, 16, 16);
+    rotate: -5deg;
+    transition-duration: 0.3s;
+}
